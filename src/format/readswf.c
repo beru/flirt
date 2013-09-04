@@ -16,8 +16,9 @@
 #include "blocktypes.h"
 #include "read.h"
 
+#ifdef HAVE_ZLIB
 #include <zlib.h>
-
+#endif
 
 char* blockName(Blocktype type);
 void skipBytes(ddReader* r, int length);

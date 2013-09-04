@@ -1,7 +1,9 @@
 
 #include <stdio.h>
 #include <math.h>
-#include <png.h>
+
+//#include <png.h>
+#include <stdlib.h>
 
 #include "flirt-debug.h"
 
@@ -28,7 +30,7 @@ traceFunction(const char* msg, void* data)
   puts(msg);
 }
 
-
+#if 0
 void
 savePNG(char* filename, ddImage* image, int width, int height)
 {
@@ -76,6 +78,7 @@ savePNG(char* filename, ddImage* image, int width, int height)
 
   fclose(f);
 }
+#endif
 
 int main(int argc, const char* argv[])
 {
@@ -114,7 +117,7 @@ int main(int argc, const char* argv[])
     ddPlayer_updateDisplay(player, NULL, NULL);
   }
 
-  savePNG("test.png", image, WIDTH, HEIGHT);
+//  savePNG("test.png", image, WIDTH, HEIGHT);
 
   dd_destroyPlayer(player);
   dd_destroyImage(image);

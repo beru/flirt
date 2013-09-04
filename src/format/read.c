@@ -99,7 +99,7 @@ bufferRead(ddReader* r, void* buf, int bytes)
 	if ( r->fileOffset + bytes > r->length )
 		bytes = r->length - r->fileOffset;
 	
-	memcpy(buf, r->data + r->fileOffset, bytes);
+	memcpy(buf, (char*)r->data + r->fileOffset, bytes);
 	r->fileOffset += bytes;
 	
 	return bytes;
@@ -309,13 +309,14 @@ readUInt32(ddReader* r)
 						(readUInt8(r) << 16) + (readUInt8(r) << 24));
 }
 
-
+#if 0
 void
 skipBytes(ddReader* r, int num)
 {
 	for( ; num > 0; --num )
 		readUInt8(r);
 }
+#endif
 
 
 double

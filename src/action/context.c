@@ -146,7 +146,15 @@ ddActionContext_execute(ddPlayer* player, ddActionContext** contextPtr)
 
 		if ( instrPtr >= endPtr )
 		{
+#if _MSC_VER
+			ddActionOpcode op;
+			op.op = ACTION_RETURN;
+			op.data = 0;
+			op.arg = NULL;
+			op.val = ddNullValue;
+#else
 			ddActionOpcode op = { ACTION_RETURN, 0, NULL, ddNullValue };
+#endif
 
 			if ( context->next == NULL )
 				break;

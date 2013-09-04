@@ -107,11 +107,11 @@ ddColor_premultiply(ddColor color)
 }
 
 
-#ifndef min
+#ifndef dd_min
   #define dd_min(a,b) (((a)<(b))?(a):(b))
 #endif
 
-#ifndef max
+#ifndef dd_max
   #define dd_max(a,b) (((a)>(b))?(a):(b))
 #endif
 

@@ -492,30 +492,32 @@ ddTimeline_playFrameSounds(ddPlayer* player, ddTimeline* timeline, ddDrawClip* c
 	if ( frame->streamblock != NULL )
 		ddSoundMixer_playSoundStreamBlock(player->mixer, clip, frame->streamblock);
 	
-	ddSoundInstance* sound = frame->sounds;
-	
-	while ( sound != NULL )
 	{
-		if ( sound->stop )
-			ddSoundMixer_stopSoundInstance(player->mixer, sound);
-		else
+		ddSoundInstance* sound = frame->sounds;
+		
+		while ( sound != NULL )
 		{
-			if ( sound->sound == NULL )
+			if ( sound->stop )
+				ddSoundMixer_stopSoundInstance(player->mixer, sound);
+			else
 			{
-				ddCharacter* c = ddMovieClip_getCharacter(player->player, sound->characterid);
+				if ( sound->sound == NULL )
+				{
+					ddCharacter* c = ddMovieClip_getCharacter(player->player, sound->characterid);
+					
+					if ( c == NULL )
+						dd_warn("requested character doesn't exist");
+					else if ( c->type != SOUND_CHAR )
+						dd_warn("requested sound id isn't a sound character");
+					else
+						sound->sound = (ddSound*)c;
+				}
 				
-				if ( c == NULL )
-					dd_warn("requested character doesn't exist");
-				else if ( c->type != SOUND_CHAR )
-					dd_warn("requested sound id isn't a sound character");
-				else
-					sound->sound = (ddSound*)c;
+				ddSoundMixer_playSoundInstance(player->mixer, clip, sound);
 			}
 			
-			ddSoundMixer_playSoundInstance(player->mixer, clip, sound);
+			sound = sound->next;
 		}
-		
-		sound = sound->next;
 	}
 }
 

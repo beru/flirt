@@ -44,7 +44,15 @@ static struct opcodeWithOffset*
 addOpcode(struct opcodeList* list)
 {
 	struct opcodeWithOffset* op;
+#ifdef _MSC_VER
+	ddActionOpcode code;
+	code.op = ACTION_END;
+	code.data = 0;
+	code.arg = NULL;
+	code.val = ddNullValue;
+#else
 	ddActionOpcode code = { ACTION_END, 0, NULL, ddNullValue };
+#endif
 	
 	list->opcodes = dd_realloc(list->opcodes,
 							(list->opcount+1) * sizeof(struct opcodeWithOffset));

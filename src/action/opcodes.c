@@ -18,6 +18,7 @@
 #include <unistd.h>
 
 #include <math.h>
+#include <float.h>
 
 #include "opcodes.h"
 #include "context.h"

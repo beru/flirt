@@ -89,8 +89,8 @@ dd_destroyMP3Decoder(ddMP3Decoder* decoder)
 {
 }
 
-int
-ddMP3Decoder_decodeFrame(ddMP3Decoder* decoder, unsigned char* data, int offset, ddAudioSample* buffer, int size)
+boolean
+ddMP3Decoder_decodeFrame(ddMP3Decoder* decoder, ddSoundTransform xform, unsigned char** dataPtr, int datalength, int delay, ddAudioSample** bufferPtr, int size)
 {
 	return 0;
 }

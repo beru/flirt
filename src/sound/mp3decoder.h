@@ -16,15 +16,22 @@
 
 typedef struct _ddMP3Decoder ddMP3Decoder;
 
+#ifdef HAVE_MAD
 #include "mad.h"
+#endif
+
 #include "mixer.h"
 #include "../player/sound.h"
 
 struct _ddMP3Decoder
 {
+#ifdef HAVE_MAD
 	struct mad_stream stream;
 	struct mad_frame frame;
 	struct mad_synth synth;
+#else
+	int fubar;
+#endif
 };
 
 

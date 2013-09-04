@@ -10,7 +10,11 @@
 */
 
 #include <string.h>
+#include "../dd.h"
+
+#ifdef HAVE_ZLIB
 #include <zlib.h>
+#endif
 
 #include "readthread.h"
 
@@ -56,6 +60,7 @@ readMovie(ddReader* r)
 	
 	if ( byte == 'C' )
 	{
+#ifdef HAVE_ZLIB
 		// file is compressed
 
 		unsigned char* buf = NULL;
@@ -89,6 +94,9 @@ readMovie(ddReader* r)
 		
 		p->bytesTotal = size;
 		p->bytesTotal = r->filesize = size;
+#else
+		return -1;
+#endif
 	}
 	else
 	{
@@ -175,7 +183,12 @@ readMovie(ddReader* r)
 				break;
 
 			case JPEGTABLES:
+				{
+					int hoge = 0;
+				}
+#if HAVE_JPEGLIB
 				readJpegTables(p, r, length);
+#endif
 				break;
 
 			case DEFINEBITS:

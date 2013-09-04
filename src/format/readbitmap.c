@@ -145,7 +145,7 @@ readDefineBitsLossless(ddMovieClip* player, ddReader* r, int length, int version
 #include "readbitmap.h"
 
 void
-readDefineBitsLossless(ddMovieClip* player, ddReader* r, int length)
+readDefineBitsLossless(ddMovieClip* player, ddReader* r, int length, int version)
 {
 	skipBytes(r, length);
 }

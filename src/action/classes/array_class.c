@@ -117,10 +117,12 @@ Array_pop(ddActionObject* object, ddActionContext* context, int nargs)
 	/* XXX */
 
 	//ddActionValue val = ddActionArray_getMember(array, num);
-	char* name = dd_malloc(sizeof(char)*16);
+	{
+		char* name = dd_malloc(sizeof(char)*16);
 
-	sprintf(name, "%i", num);
-	ddActionHash_removeValue(object->properties, name);
+		sprintf(name, "%i", num);
+		ddActionHash_removeValue(object->properties, name);
+	}
 
 	return ddNullValue;
 }
