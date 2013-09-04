@@ -1,0 +1,53 @@
+Flirt - an open source, extensible Flash(tm) runtime
+http://www.opaque.net/flirt/
+
+
+About
+
+Flirt is an SWF rendering library. Flirt contains a parser for reading SWF
+format files, a rasterizer for rendering the vector shaped into bitmaps,
+and an actionscript engine. Just hook it up to a timer and you've got a
+player. Interface your system UI events into the hooks provided and it's
+interactive. Present your application code to the player as actionscript
+objects and you've got a scriptable, cross-platform UI. 
+
+src/           - source code
+  action/      - actionscript engine
+    classes/   - script object implementations
+  format/      - SWF file format parser
+  player/      - player logic: everything that's not script or rendering
+  render/      - rasterizer code
+  sound/       - beginning of sound support
+ex/            - example SWF files
+docs/          - Flirt web pages
+
+Flirt is distributed under the two-clause BSD license. See the LICENSE
+file for details.
+
+
+Building and installation
+
+There's only a Makefile for now. Running 'make' builds libflirt.a. There
+is no 'make install' because Flirt doesn't belong in a system library
+folder--it's way too early for that. If you're linking into flirt, just
+copy the .a file into your project folder.
+
+The test.c demo program can be built with 'make test'. It needs libpng for
+writing out the rendered image, and libjpeg and libz if you leave the
+HAVE_JPEGLIB and HAVE_ZLIB defines in the src/dd.h config file. I haven't 
+tried commenting them out but I'd bet it'll work, you just won't be able 
+to render SWF files with bitmaps inside them. Don't forget to remove them 
+from the LFLAGS in the Makefile if you do!
+
+There's also an Xcode project containing the Flirt source and the start of
+a small debugger application that lets you browse the movie file, step 
+through frames, and set breakpoints in script. Like Flirt, it's still 
+very early in development. It's an Xcode 1.5 project, but I think it 
+should work in Xcode 1.2 as well.
+
+
+Email me if you have any questions or comments or suggestions:
+
+Dave Hayden
+dave@opaque.net
+

@@ -1,0 +1,51 @@
+{
+    IBClasses = (
+        {
+            CLASS = ActionList; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {delegate = id; }; 
+            SUPERCLASS = NSTableView; 
+        }, 
+        {
+            CLASS = BreakpointListView; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {delegate = id; }; 
+            SUPERCLASS = NSView; 
+        }, 
+        {
+            CLASS = BreakpointTableView; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {delegate = id; }; 
+            SUPERCLASS = NSTableView; 
+        }, 
+        {CLASS = CodeListView; LANGUAGE = ObjC; SUPERCLASS = NSTableView; }, 
+        {
+            CLASS = DebugController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                actionList = NSTableView; 
+                actionView = NSView; 
+                breakpointsView = BreakpointListView; 
+                consoleView = NSView; 
+                debuggerView = NSView; 
+                fileList = NSOutlineView; 
+                flashView = FlashView; 
+                flashWindow = NSWindow; 
+                framesList = NSTableView; 
+                stageList = NSOutlineView; 
+                swapView = NSView; 
+                variablesList = NSOutlineView; 
+            }; 
+            SUPERCLASS = NSWindowController; 
+        }, 
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {
+            CLASS = FlashView; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {delegate = id; }; 
+            SUPERCLASS = NSView; 
+        }, 
+        {CLASS = NSObject; LANGUAGE = ObjC; }
+    ); 
+    IBVersion = 1; 
+}
